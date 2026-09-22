@@ -1,9 +1,9 @@
 /* Définition des variables */
 :root {
-  --primary-color: #704832;         /* Votre couleur de base */
-  --primary-dark: #3a2214;          /* Une nuance très sombre pour les contrastes */
-  --bg-creme: #fcfaf7;              /* Fond général style papier */
-  --shadow-color: #2b1c13;          /* Couleur de l'ombre portée */
+  --color-1: #704832;
+  ---color-2: #3a2214;
+  ---color-bg: #fcfaf7;
+  ---color-shadow: #2b1c13;
 }
 
 /* Réinitialisation */
@@ -14,165 +14,161 @@
 }
 
 body {
-  font-family: 'Courier New', Courier, monospace; /* Style "machine à écrire / codeur" */
+  font-family:
+    "Courier New", Courier, monospace; /* Style "machine à écrire / codeur" */
   background-color: var(--bg-creme);
-  color: var(--primary-dark);
+  color: var(---color-2);
   line-height: 1.4;
   padding: 15px;
 }
 
+/* CSS HEADER */
+header {
+  figure {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 5px solid var(---color-2);
+    overflow: hidden;
+    margin: 0 auto;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  h1 {
+    font-size: 1.6rem;
+    color: var(---color-shadow);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+  h2 {
+    font-size: 1.1rem;
+    color: var(--color-1); /* Votre couleur de base */
+    font-weight: 600;
+    text-transform: uppercase; /* Met le métier en majuscules */
+    letter-spacing: 1px;
+  }
+}
+/* CSS MAIN */
 main {
-  max-width: 600px;
-  margin: 0 auto;
+  margin: 1em 0;
 }
-
-/* Blocs principaux avec effet de relief "brutaliste" */
+/* CSS MAIN - details*/
 details {
-  background-color: #ffffff;
-  border: 3px solid var(--primary-dark); /* Bordure épaisse */
-  border-radius: 0px;                    /* Angles vifs (style rétro/pop) */
+  background-color: #fff;
+  border: 3px solid var(--color-1);
   margin-bottom: 25px;
-  box-shadow: 5px 5px 0px var(--shadow-color); /* Ombre pleine et nette */
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Effet dynamique quand on clique/ouvre le bloc */
-details[open] {
-  transform: translate(2px, 2px);
-  box-shadow: 3px 3px 0px var(--shadow-color);
-}
-
-/* Style des barres de titre cliquables */
-summary {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  padding: 12px;
-  font-size: 1.15rem;
-  font-weight: bold;
-  text-transform: uppercase; /* Titres en majuscules */
-  border-bottom: 3px solid var(--primary-dark);
-  cursor: pointer;
-}
-
-/* Conteneur d'un poste ou d'une formation */
-.content {
-  padding: 15px;
-  border-bottom: 2px dashed var(--primary-color); /* Ligne de séparation en pointillés */
-}
-
-.content:last-of-type {
-  border-bottom: none;
-}
-
-/* Titre des expériences / formations */
-.content-title h3 {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--primary-dark);
-}
-
-/* Style des dates */
-time {
-  display: inline-block;
-  background-color: var(--primary-dark);
-  color: #ffffff;
-  padding: 2px 6px;
-  font-size: 0.8rem;
-  margin-top: 5px;
-}
-
-/* Listes de description */
-.content-description {
-  margin-top: 10px;
-  list-style-type: none; /* On enlève les puces par défaut */
-}
-
-.content-description li {
-  font-size: 0.9rem;
-  margin-bottom: 6px;
-  padding-left: 15px;
-  position: relative;
-}
-
-/* Flèche personnalisée devant chaque description */
-.content-description li::before {
-  content: ">";
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-/* --- ADAPTATION GRAND ÉCRAN (Tablettes / PC) --- */
-@media (min-width: 768px) {
-  body {
-    padding: 40px;
+  box-shadow: 5px 5px 0px var(---color-shadow); 
+  summary {
+    background-color: var(--color-1);
+    color: #fff;
+    padding: 12px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--color-1);
   }
-
-  /* Aligne le titre et la date sur la même ligne */
-  .content-title h3 {
+  .content {
+    padding: 15px;
+    border-bottom: 2px dashed var(--color-1);
+    &:last-of-type {
+      border-bottom: none;
+    }
+    .content-title h3 {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--color-1);
+      time {
+        display: inline-block;
+        background-color: var(--color-1);
+        color: #fff;
+        padding: 2px 6px;
+        font-size: 0.8rem;
+        margin-top: 5px;
+      }
+    }
+    .content-description {
+      margin-top: 10px;
+      list-style-type: none;
+      li {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+        padding-left: 15px;
+        position: relative;
+      }
+      li::before {
+        content: "♧";
+        position: absolute;
+        left: 0;
+        color: var(--color-1);
+        font-weight: bold;
+      }
+    }
+  }
+  .extra {
+    list-style-type: none;
+    padding: 15px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    gap: 12px;
+    overflow: auto;
+    white-space: nowrap;
+    /* &:hover{
 
-  time {
-    margin-top: 0;
+        } */
+    li {
+      display: inline-block;
+      background-color: #fff;
+      color: var(--color-1);
+      border: 1px solid var(--color-1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(112, 772, 50, 0.1);
+    }
   }
 }
-.content-description li::before {
-  content: "◈";
-  color: var(--primary-dark);
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-}/* CONTAINER : Active le défilement horizontal */
-.extra {
-  list-style-type: none; /* Retire les puces */
-  padding: 15px 5px;
-  display: flex;         /* Aligne les cartes en ligne */
-  gap: 12px;             /* Espace entre les cartes */
-  overflow-x: auto;      /* Permet de scroller manuellement si besoin */
-  white-space: nowrap;   /* Empêche les cartes d'aller à la ligne */
-  
-  /* Active l'effet de défilement automatique infini */
-  animation: scrollInfini 20s linear infinite;
-}
-
-/* Ralentit ou met en pause le défilement quand on passe la souris dessus */
-.extra:hover {
-  animation-play-state: paused; 
-}       
-/* LES CARTES : Style des petits blocs individuels */
-.extra li {
-  display: inline-block;
-  background-color: #ffffff;
-  color: #704832;                   /* Votre couleur de base */
-  border: 1px solid #704832;        /* Bordure fine */
-  padding: 8px 16px;
-  border-radius: 20px;              /* Format "pilule / badge" moderne */
-  font-size: 0.9rem;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(112, 72, 50, 0.1);
-  flex-shrink: 0;                   /* Empêche la carte de se déformer/s'écraser */
-}
-
-/* L'ANIMATION : Fait bouger le conteneur de droite à gauche */
-@keyframes scrollInfini {
-  0% {
-    transform: translateX(0);
+/* CSS FOOTER */
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  text-align: center;
+  a {
+    color: var(--color-1); /* Votre couleur de base */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
   }
-  100% {
-    /* Ajustez le pourcentage selon le nombre d'éléments pour éviter les saccades */
-    transform: translateX(-50%); 
+  .footer-contact,
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-credits {
+    font-size: 0.8rem;
+    color: #6e5d53;
+    margin-top: 5px;
+    border-top: 1px solid #e6ded9;
+    padding-top: 10px;
+    width: 100%;
   }
 }
 
-/* Masque les barres de défilement pour un effet plus propre */
-.extra::-webkit-scrollbar {
-  display: none; /* Pour Chrome, Safari et Opera */
-}
-.extra {
-  -ms-overflow-style: none;  /* Pour Internet Explorer et Edge */
-  scrollbar-width: none;  /* Pour Firefox */
+footer, header {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid var(--color-1);
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 -4px 12px rgba(112, 72, 50, 0.03); 
 }
